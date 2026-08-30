@@ -84,5 +84,9 @@ assert(context.adminCredentials && context.adminCredentials.email === 'bohdan.hl
 assert(context.adminCredentials && context.adminCredentials.password === '@GlavaStudent04@', 'Expected admin password to be configured');
 assert(Array.isArray(context.pendingAccounts), 'Pending accounts list should exist');
 assert(Array.isArray(context.pendingProjects), 'Pending projects list should exist');
+assert(typeof context.openProfile === 'function', 'Expected profile page handler to exist');
+assert(typeof context.editProfile === 'function', 'Expected profile editor to exist');
+assert(typeof context.deleteProject === 'function', 'Expected admin project deletion handler to exist');
+assert(Array.isArray(context.accounts), 'Approved users list should exist');
 
 console.log(`Seed data loaded: ${context.projects.length} projects, ${context.categories.length} categories`);
