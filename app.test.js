@@ -1,0 +1,84 @@
+const fs = require('fs');
+const vm = require('vm');
+
+function createElement() {
+  return {
+    innerHTML: '',
+    hidden: false,
+    value: '',
+    textContent: '',
+    dataset: {},
+    style: {},
+    classList: {
+      add() {},
+      remove() {},
+      contains() { return false; }
+    },
+    querySelector() { return null; },
+    querySelectorAll() { return []; },
+    addEventListener() {},
+    appendChild() {},
+    setAttribute() {},
+    onclick: null
+  };
+}
+
+const elements = {
+  '#project-grid': createElement(),
+  '#modal-backdrop': { ...createElement(), hidden: true },
+  '#modal-content': createElement(),
+  '#toast': createElement(),
+  '#category-row': createElement(),
+  '#language-select': { ...createElement(), value: 'en' },
+  '#open-register': createElement(),
+  '#hero-start': createElement(),
+  '#community-register': createElement(),
+  '#chat-preview': createElement(),
+  '#open-login': createElement(),
+  '#close-modal': createElement(),
+  '#filter-trigger': createElement()
+};
+
+const localStorage = {
+  data: {},
+  getItem(key) {
+    return Object.prototype.hasOwnProperty.call(this.data, key) ? this.data[key] : null;
+  },
+  setItem(key, value) {
+    this.data[key] = String(value);
+  }
+};
+
+const document = {
+  documentElement: { lang: 'en' },
+  body: { style: {} },
+  querySelector(selector) {
+    return elements[selector] || null;
+  },
+  querySelectorAll() {
+    return [];
+  }
+};
+
+const context = {
+  console,
+  localStorage,
+  document,
+  window: { localStorage, indexedDB: null },
+  setTimeout,
+  clearTimeout,
+  Date
+};
+
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('app.js', 'utf8'), context, { filename: 'app.js' });
+
+if (!Array.isArray(context.projects) || context.projects.length === 0) {
+  throw new Error('Expected seeded projects in app.js');
+}
+
+if (!Array.isArray(context.categories) || context.categories.length === 0) {
+  throw new Error('Expected seeded categories in app.js');
+}
+
+console.log(`Seed data loaded: ${context.projects.length} projects, ${context.categories.length} categories`);
