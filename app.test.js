@@ -80,5 +80,9 @@ assert(Array.isArray(context.categories) && context.categories.length > 0, 'Expe
 assert(context.projects.every(project => typeof project.summary === 'string' && project.summary.trim().length > 0), 'Each project needs a summary description');
 assert(context.projects.every(project => Array.isArray(project.gallery) && project.gallery.length > 0), 'Each project needs gallery images');
 assert(context.projects.every(project => project.medals && Array.isArray(project.medals)), 'Each project needs medal data');
+assert(context.adminCredentials && context.adminCredentials.email === 'bohdan.hlavatskyi@my.utsa.edu', 'Expected admin email to be configured');
+assert(context.adminCredentials && context.adminCredentials.password === '@GlavaStudent04@', 'Expected admin password to be configured');
+assert(Array.isArray(context.pendingAccounts), 'Pending accounts list should exist');
+assert(Array.isArray(context.pendingProjects), 'Pending projects list should exist');
 
 console.log(`Seed data loaded: ${context.projects.length} projects, ${context.categories.length} categories`);
