@@ -48,6 +48,9 @@ const localStorage = {
   },
   setItem(key, value) {
     this.data[key] = String(value);
+  },
+  removeItem(key) {
+    delete this.data[key];
   }
 };
 
@@ -87,6 +90,8 @@ assert(Array.isArray(context.pendingProjects), 'Pending projects list should exi
 assert(typeof context.openProfile === 'function', 'Expected profile page handler to exist');
 assert(typeof context.editProfile === 'function', 'Expected profile editor to exist');
 assert(typeof context.deleteProject === 'function', 'Expected admin project deletion handler to exist');
+assert(context.openAdminPanel.toString().includes('delete-project'), 'Expected admin panel to include a direct project delete action');
+assert(context.openAdminPanel.toString().includes('Published projects') || context.openAdminPanel.toString().includes('No published projects'), 'Expected admin panel to list published projects');
 assert(Array.isArray(context.accounts), 'Approved users list should exist');
 
 console.log(`Seed data loaded: ${context.projects.length} projects, ${context.categories.length} categories`);
