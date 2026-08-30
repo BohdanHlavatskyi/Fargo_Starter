@@ -1,5 +1,6 @@
 const fs = require('fs');
 const vm = require('vm');
+const assert = require('assert');
 
 function createElement() {
   return {
@@ -34,6 +35,7 @@ const elements = {
   '#hero-start': createElement(),
   '#community-register': createElement(),
   '#chat-preview': createElement(),
+  '#donor-join': createElement(),
   '#open-login': createElement(),
   '#close-modal': createElement(),
   '#filter-trigger': createElement()
@@ -73,12 +75,10 @@ const context = {
 vm.createContext(context);
 vm.runInContext(fs.readFileSync('app.js', 'utf8'), context, { filename: 'app.js' });
 
-if (!Array.isArray(context.projects) || context.projects.length === 0) {
-  throw new Error('Expected seeded projects in app.js');
-}
-
-if (!Array.isArray(context.categories) || context.categories.length === 0) {
-  throw new Error('Expected seeded categories in app.js');
-}
+assert(Array.isArray(context.projects) && context.projects.length > 0, 'Expected seeded projects in app.js');
+assert(Array.isArray(context.categories) && context.categories.length > 0, 'Expected seeded categories in app.js');
+assert(context.projects.every(project => typeof project.summary === 'string' && project.summary.trim().length > 0), 'Each project needs a summary description');
+assert(context.projects.every(project => Array.isArray(project.gallery) && project.gallery.length > 0), 'Each project needs gallery images');
+assert(context.projects.every(project => project.medals && Array.isArray(project.medals)), 'Each project needs medal data');
 
 console.log(`Seed data loaded: ${context.projects.length} projects, ${context.categories.length} categories`);
