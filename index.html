@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fargo starter | Ideas into impact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Fargo starter home"><span class="brand-mark">F</span><span>Fargo starter</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="#discover" data-l10n="discover">Discover</a><a href="#how-it-works" data-l10n="howItWorks">How it works</a><a href="#community" data-l10n="community">Community</a></nav>
+    <div class="header-actions"><label class="language-picker"><span>◎</span><select id="language-select" aria-label="Choose language"><option value="en">English</option><option value="es">Español</option><option value="pt">Português</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="zh">中文</option><option value="pl">Polski</option><option value="uk">Українська</option></select></label><button class="text-btn" id="open-login" data-l10n="signIn">Sign in</button><button class="button button-dark" id="open-register" data-l10n="join">Join Fargo <span>→</span></button></div>
+  </header>
+  <main id="top">
+    <section class="hero section-wrap">
+      <div class="hero-copy reveal"><p class="eyebrow" data-l10n="network">THE STUDENT FUNDING NETWORK</p><h1 data-l10n="headline">Big ideas deserve a <em>first chance.</em></h1><p class="hero-intro" data-l10n="heroIntro">A trusted place for student builders, campus organizations, faculty, and early believers to turn a spark into something real.</p><div class="hero-actions"><button class="button button-red" id="hero-start" data-l10n="startProject">Start a project <span>↗</span></button><a class="quiet-link" href="#discover" data-l10n="explore">Explore projects <span>↓</span></a></div><div class="hero-proof"><div class="avatars"><span>AC</span><span>JM</span><span>RK</span><span>+</span></div><p><strong>1,240+</strong> <span data-l10n="peopleBuilding">people are building</span><br><span data-l10n="futureTogether">the future together.</span></p></div></div>
+      <div class="hero-visual reveal"><div class="visual-label"><span class="live-dot"></span> <span data-l10n="newThisWeek">New this week</span> <strong data-l10n="openForIdeas">Open for ideas</strong></div><div class="hero-photo"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=85" alt="Students collaborating around a table"></div></div>
+    </section>
+    <section class="statement section-wrap" id="how-it-works"><p class="eyebrow" data-l10n="founderNote">A NOTE FROM THE FOUNDER</p><blockquote data-l10n="quote">“We know that ideas are useful. Also, we know that receiving funds at the initial stage of the project is very difficult, yet it can be game-changing.”</blockquote><p data-l10n="mission">Fargo Starter was created to help hardworking and motivated students raise funds for their projects at the very first stage to jump-start innovation, manufacturing, and change the world for the better.</p></section>
+    <section class="discover section-wrap" id="discover"><div class="section-heading"><div><p class="eyebrow" data-l10n="openCall">THE OPEN CALL</p><h2 data-l10n="projectsWorthBacking">Projects worth backing.</h2></div><button class="quiet-link filter-trigger" id="filter-trigger" data-l10n="allDisciplines">All disciplines <span>⌄</span></button></div><div class="category-row" id="category-row"></div><div class="project-grid" id="project-grid"></div></section>
+    <section class="community section-wrap" id="community"><div><p class="eyebrow" data-l10n="builtForCampus">BUILT FOR CAMPUS</p><h2 data-l10n="oneNetwork">One network.<br><em>Many ways in.</em></h2></div><p class="community-copy" data-l10n="communityIntro">Bring your point of view to the table. Your profile badge opens the right conversations, spaces, and opportunities for you.</p><div class="community-actions"><button class="button button-outline" id="community-register" data-l10n="findYourPlace">Find your place <span>→</span></button><button class="button button-outline" id="chat-preview" data-l10n="previewChat">Preview chat spaces <span>↗</span></button></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-top"><a class="brand brand-light" href="#top"><span class="brand-mark">F</span><span>Fargo starter</span></a><p>The first step for the next big thing.</p><div class="footer-links"><a href="#discover">Discover</a><a href="https://www.wellsfargo.com/" target="_blank" rel="noopener noreferrer">About Fargo</a><a href="#community">Community</a></div></div><div class="footer-bottom"><span>© 2025 Fargo starter. All rights reserved.</span><span>Created simply to demonstrate an understanding of Wells Fargo’s goals.</span></div></footer>
+  <div class="modal-backdrop" id="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="close-modal" id="close-modal" aria-label="Close">×</button><div id="modal-content"></div></section></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
