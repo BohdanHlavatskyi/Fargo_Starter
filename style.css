@@ -119,12 +119,16 @@ button {
   font: 700 14px 'DM Sans', sans-serif;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .hero-intro {
   color: #596568;
   font-size: 16px;
   line-height: 1.65;
   max-width: 445px;
+}
+.hero-proof p {
+  white-space: nowrap;
 }
 .hero-actions {
   display: flex;
